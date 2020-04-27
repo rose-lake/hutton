@@ -1,0 +1,34 @@
+Chapter 2:
+
+check out haskell.org for more resources
+
+p.27 :: for useful list functions
+head  and  tail,    where head : tail == full list!
+!!                  is used for indexing, zero-based
+
+p.30 :: for useful ghci commands
+        for reserved names
+            case        class
+            data        default
+            deriving    do
+            else        foreign
+            if          import
+            in          infix
+            infixl      infixr
+            instance    let
+            module      newtype
+            of          then
+            type        where
+        naming conventions ::
+            ns :: list of numbers
+            xs :: list of arbitrary values
+            css :: list of lists of characters
+
+SCOPE :: LAYOUT RULE :: each definition at the same level of scope must begin in the same column
+
+COMMENTS ::
+    ordinary :: begin with --
+    nested ::   begin with {-
+                end with -}
+                can contain other comments within them.
+                very useful for commenting out blocks of definitions

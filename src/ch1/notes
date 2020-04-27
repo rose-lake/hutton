@@ -1,0 +1,64 @@
+Chapter 1: Introduction
+
+in Haskell, functions are EQUATIONS...
+in other languages, functions are a series of steps that describe how to mutate some state.
+so that's why the = {}
+the primary mechanism is substitution rather than any mutation.
+this is how you should think about functions in Haskell
+in other languages this kind of thinking isn't always valid.
+in Haskell equational reasoning holds in a lot of places and is very useful.
+
+in Java, for instance, obtaining the sum of a set of numbers from 1 to n,
+    int total = 0;
+    for (int count = 1; count <= n; count++)
+        total = total + count;
+
+    imperative language: where the basic method of computation is changing stored values.
+
+in Haskell, on the other hand, you use two library functions:
+    [..] --> used to produce the list of numbers between 1 and n
+    sum --> used to produce the sum of this list
+
+    sum [1..n]
+
+    the basic method of computation is applying functions to arguments
+    executing the program results in a sequence of applications
+        sum [1..5]
+        {applying [..]}
+        sum [1, 2, 3, 4, 5]
+        {applying sum}
+        1 + 2 + 3 + 4 + 5
+        {applying +}
+        15
+
+proof of quicksort method:
+
+    qsort :: Ord a => [a] -> [a]
+    qsort [] = []
+    qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
+                    where
+                        smaller = [a | a <- xs, a <= x]
+                        larger = [b | b <- xs, b > x]
+
+    qsort [3, 5, 1, 4, 2]
+    {applying qsort}
+    qsort [1, 2] ++ [3] ++ qsort [5, 4]
+    {applying qsort}
+    (qsort [] ++ [1] ++ qsort [2]) ++ [3] ++ (qsort [4] ++ [5] ++ [])
+    {applying qsort, using property (previously proved in text) that qsort[x] = [x]}
+    ([] ++ [1] ++ [2]) ++ [3] ++ ([4] ++ [5] ++ [])
+    {applying ++}
+    [1, 2] ++ [3] ++ [4, 5]
+    {applying ++}
+    [1, 2, 3, 4, 5]
+
+quicksort can be applied to any ordinals, for instance:
+
+    *Main Lib> qsort [3, 8, 9, 19, 21, 18, 15, 23, 0, -1, -9, 12]
+    [-9,-1,0,3,8,9,12,15,18,19,21,23]
+
+    *Main Lib> qsort ["hello", "my", "name", "is", "Ksenia", "Rose", "Lake"]
+    ["Ksenia","Lake","Rose","hello","is","my","name"]
+
+    *Main Lib> qsort ['a', 'o', 'n', 'c', 'e', 'u','p','o','n','a','t','i','m','e']
+    "aaceeimnnooptu"

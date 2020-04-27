@@ -1,0 +1,36 @@
+HW :: do exercises 3, 4, 5
+
+3. The script below contains 3 syntactic erros. Correct them and make sure your script works using GHCi
+
+    -- original script ::
+    N = a `div` length xs
+        where
+            a = 10
+            xs = [1, 2, 3, 4, 5]
+
+4. The library function last selects the last element of a non-empty list. Show how the function last can be implemented using the functions already introduced in chapter 2. Then, can you think of a different way to do it?
+
+    -- one way
+    last' :: Num a => [a] -> a
+    last' [] = error "Can't have a last element of an empty list!"
+    last' l = sum (drop ((length l) - 1) l)
+    -- another way
+    last'' :: Num a => [a] -> a
+    last'' [] = error "Can't have a last element of an empty list!"
+    last'' l = head (reverse l)
+    -- a third way
+    last''' :: Num a => [a] -> a
+    last''' [] = error "Can't have a last element of an empty list!"
+    last''' l = l !! (length l - 1)
+
+5. The library function init removes the last element from a non-empty list. Show how init can be similarly defined in two different ways.
+
+    -- one way
+    init' :: [a] -> [a]
+    init' [] = error "Can't have an init of an empty list"
+    init' l = take (length l - 1) l
+    -- another way
+    init'' :: [a] -> [a]
+    init'' [] = error "Can't have an init of an empty list"
+    init'' l = reverse (tail (reverse l))
+    -- couldn't think of a third way this time... 

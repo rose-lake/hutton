@@ -1,0 +1,26 @@
+trying the book exercises once more.
+1.
+[Char]
+(Char, Char, Char)
+[(Bool, Char)]
+([Bool], [Char])
+[[a] -> [a]]
+
+2.   ;; skipping this one
+
+
+3.
+second :: [a] -> a    but that's not completely right.
+            maybe it's...
+second :: ([a] -> [a]) -> [a] -> a
+second xs = head (tail xs)
+            I think it's the second which I wrote...
+also, for clarity, it's ([a] -> [a]) -> ([a] -> a)
+
+swap :: (a, b) -> (b, a)
+pair :: a -> b -> (a, b)
+double :: Num a => a -> a
+palindrome xs :: Eq a => [a] -> Bool
+twice :: (a -> a) -> a -> a
+or
+twice :: (a -> a) -> (a -> a)

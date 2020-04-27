@@ -1,0 +1,44 @@
+Chapter 15: evaluation order
+
+innermost evaluation
+    choose a reducible expression (redex) that is innermost.
+    if it has more than one redex in it, go left to right.
+
+arguments fully evaluated before functions applied:
+    arguments are always fully evaluated before functions are applied
+    this is called arguments that are passed 'by value'
+
+example:
+    mult (1+2, 2+3)
+    {applying first +}
+    mult (3, 2+3)
+    {applying +}
+    mult (3, 5)
+    {applying mult}
+    3 * 5
+    {applying *}
+    15
+
+outermost evaluation:
+    always choose a redex that is outermost.
+    meaning, it is not contained within any other redex.
+    if there is more than one such redex, evaluation begins at the leftmost one.
+
+example:
+    mult (1+2, 2+3)
+    {applying mult}
+    (1+2) * (2+3)
+    {applying first +}
+    3 * (2+3)
+    {applying +}
+    3 * 5
+    {applying *}
+    15
+
+functions applied before arguments evaluated:
+    using outermost evaluation allows functions to be applied before their arguments are evaluated
+    arguments are passed 'by name'
+
+exceptions: 'strict':
+    many built-in functions REQUIRE that their arguments be evaluated before the function can be applied.
+    for example, built-in arithmetic operations such as * and + cannot be applied until their arguments have been evaluated to numbers.

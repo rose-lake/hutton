@@ -1,0 +1,108 @@
+BASIC CLASSES
+
+Eq          ::  things that can be compared with == or /=
+Ord         ::  things that can be ordered by <, <=, >, >=, min, max
+Show        ::  things that can be displayed as a String
+Read        ::  things whose value can be read in from a String
+Num         ::  numeric types. can be processed using: +, -, *, negate, abs, signum
+Integral    ::  types that are instances of Num
+                and whose values are integers
+                and support integer division and integer remainder
+                    div :: a -> a -> a
+                    mod :: a -> a -> a
+                Int and Integer are both instances of the Integral class.
+Fractional  ::  types that are instances of Num
+                and whose values are non-integral
+                and support fractional division and fractional reciprocation
+                    (/) :: a -> a -> a
+                    recip :: a -> a
+                    
+
+POLYMORPHISM & POLYMORPHIC TYPES
+
+just means that a type can have many specific types that it can be.
+the function length can successfully calculate the length of a list of strings, chars, ints, etc.
+the type of length is as follows
+
+    length :: [a] -> Int
+
+It can take in a list containing any type of element, this is denoted by the letter 'a', and returns an integer result.
+
+OVERLOADED
+
+when a type includes one or more class constraints, it's called an overloaded type.
+examples:
+    (+) :: Num a => a -> a -> a
+    negate :: Num a => a -> a
+
+CURRIED FUNCTIONS
+
+unless tupling is explicitly required, all functions in Haskell are normally defined as curried functions.
+the function arrow notation associates to the right, so the parentheses are implied:
+    Int -> Int -> Int -> Int
+        is the same as
+    Int -> (Int -> (Int -> Int))
+all functions in Haskell, by default, can be applied partially, and operate as functions returning functions, until the end.
+the flip-side of this, is that function application associates to the left.
+    mult x y z
+        is the same as
+    (((mult x) y ) z)
+
+TYPES
+
+Bool    ::  logical values. False. True. 'not' function.
+
+Char    ::  single characters. enclose in single quotes.
+
+String  ::  strings of characters. enclose in double quotes. List of Chars.
+
+Int     ::  fixed precision integers. - 2 ^ 63 to 2 ^ 63 - 1. faster choice.
+
+Integer ::  arbitrary precision integers. slower choice.
+
+Float   ::  single-precision floating point numbers. fixed amount of memory.
+
+            sqrt 2 :: Float
+            >> 1.4142135
+
+            sqrt 99999 :: Float
+            >> 316.2262
+
+            you can see how the decimal point moves around (floats) depending on the length/size of the number.
+
+Double  ::  twice as much memory used as for float.
+
+            sqrt 2 :: Double
+            >> 1.4142135623730951
+
+            sqrt 99999 :: Double
+            >> 316.226184874055
+
+            using Float and Double is a specialist topic.
+            careful treatment of rounding errors.
+            beyond the scope of this book.
+
+List    ::  all elements of a list must share a type. [Bool] [Char] [String] [[Char]] etc.
+            may be infinite.
+            examples:
+                singleton list : ['a'] or [[]] or [True] or [1]
+                list of lists : [['a', 'b'], ['c', 'd', 'e']]
+                empty list: []
+                note: empty list ≠ singleton of an empty list: [] ≠ [[]]
+
+Tuple   ::  * finite * sequence of components of possibly different types.
+            arity ::
+                number of components = its 'arity'
+                tuples of arity zero are empty tuple
+                tuples of arity one are NOT ALLOWED as it would conflict with parentheses used for evaluation order
+                the type of a tuple conveys its arity <-> finite <-> type declaration shows arity
+            components ::
+                no restrictions on the components
+                (Char, (Bool, Char))
+                ([Char], [Bool])
+            also can be inside lists ::
+                [(Char, Bool)]
+            examples:
+                (False, True, False) :: (Bool, Bool, Bool)
+                (False, 'a', True) :: (Bool, Char, Bool)
+                ("Yes", True, 'a') :: (String, Bool, Char)

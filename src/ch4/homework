@@ -1,0 +1,34 @@
+HW :: Chapter 4
+    read all sections
+    exercises 1, 3, 4, 7
+
+√ 1. 2. 3.
+see hutton-Ch4-plus stack project
+
+√ 4.
+following the book's examples for &&
+show how || can be implemented four different ways using pattern matching
+
+a.
+(||) :: Bool -> Bool -> Bool
+False || False  = False
+False || True   = True
+True || False   = True
+True || True    = True
+
+b.
+(||) :: Bool -> Bool -> Bool
+False || False  = False
+_ || _          = True
+
+c.
+(||) :: Bool -> Bool -> Bool
+False || b  = b
+True || _   = True
+
+d.
+(||) :: Bool -> Bool -> Bool
+b || c  | b == c    = b
+        | otherwise = True
+
+7. see Main.hs

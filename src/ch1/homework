@@ -1,0 +1,97 @@
+1. Give another possible calculation of double (double 2)
+
+    example given in book:
+        double x = x + x
+
+    another implementation:
+        double x = 2 * x
+
+    reducible expressions:
+        double (double 2)
+        = {applying outer double}
+        2 * (double 2)
+        = {applying double}
+        2 * (2 * 2)
+        = {applying inner *} [because * requires evaluated arguments]
+        2 * 4
+        = {applying *}
+        8
+
+2. Show that sum [x] = x  for any number
+
+    given the definition of sum as follows:
+
+        sum :: Num a => [a] -> a
+        sum [] = 0
+        sum (n:ns) = n + sum ns
+
+    sum [x]
+    {applying sum}
+    x + sum []
+    {applying sum}
+    x + 0
+    {applying +}
+    x
+
+3. Define a function that produces the product of a list of numbers,
+    and show using your definition that the product of [2, 3, 4] = 24.
+
+    product' :: Num a => [a] -> a
+    product' [] = 1
+    product' (x:xs) = x * product' xs
+
+    product [2, 3, 4]
+    = {applying product}
+    2 * product [3, 4]
+    = {applying product}
+    2 * 3 * product [4]
+    = {applying product}
+    2 * 3 * 4 * product []
+    = {applying product}
+    2 * 3 * 4 * 1
+    = {applying *}
+    24
+
+4. How should the definition of the function qsort be modified so it produces a reverse sorted version of a list?
+
+    original function definition:
+
+        qsort :: Ord a => [a] -> [a]
+        qsort [] = []
+        qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
+                        where
+                            smaller = [a | a <- xs, a <= x]
+                            larger = [b | b <- xs, b > x]
+
+    modified function definition:
+        rsort :: Ord a => [a] -> [a]
+        rsort [] = []
+        rsort (x:xs) = rsort left ++ [x] + rsort right
+                        where
+                            left = [a | a <- xs, a >= x]
+                            right = [b | b <- xs, b < x]
+
+    for testing my rsort:
+        rsort [3, 8, 9, 19, 21, 18, 15, 23, 0, -1, -9, 12]
+        rsort ["hello", "my", "name", "is", "Ksenia", "Rose", "Lake"]
+        rsort ['a', 'o', 'n', 'c', 'e', 'u','p','o','n','a','t','i','m','e']
+
+5. What would be the effect of replacing <= by < in the original definition of qsort?
+    Consider the solution to qsort [2, 2, 3, 1, 1]
+
+    original function definition:
+
+        qsort :: Ord a => [a] -> [a]
+        qsort [] = []
+        qsort (x:xs) = qsort smaller ++ [x] ++ qsort larger
+                        where
+                            smaller = [a | a <- xs, a <= x]
+                            larger = [b | b <- xs, b > x]
+
+    new definition:
+        qsort' :: Ord a => [a] -> [a]
+        qsort' [] = []
+        qsort' (x:xs) = qsort' smaller ++ [x] ++ qsort' larger
+                        where
+                            smaller = [a | a <- xs, a < x]
+                            larger = [b | b <- xs, b > x]

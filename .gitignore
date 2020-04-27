@@ -1,0 +1,50 @@
+##############################
+# default provided by stack
+.stack-work/
+*~
+##############################
+
+##############################
+# while I'm keeping all the default structures provided by `stack`
+# I'm also gitignoring those aspects I don't need right now
+app/
+test/
+package.yaml
+Setup.hs
+ChangeLog.md
+##############################
+
+##############################
+# I also don't really want to include all my stack.yaml.lock info, so...
+# this tidbit came from
+# https://github.com/commercialhaskell/stack/blob/master/.gitignore
+stack*.yaml.lock
+##############################
+
+##############################
+# this is the gitignore provided at
+# https://github.com/github/gitignore/blob/master/Haskell.gitignore
+dist
+dist-*
+cabal-dev
+*.o
+*.hi
+*.hie
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+*.prof
+*.aux
+*.hp
+*.eventlog
+.stack-work/
+cabal.project.local
+cabal.project.local~
+.HTF/
+.ghc.environment.*
+##############################

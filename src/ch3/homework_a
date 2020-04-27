@@ -1,0 +1,51 @@
+HW :: Chapter 3
+    read all sections
+    do exercises 1, 2, 3
+
+1.  [Char] √
+    (Char, Char, Char) √
+    [(Bool, Char), (Bool, Char)] x ---> [(Bool, Char)]
+    ([Bool], [Char]) √
+    [[a], [a], [a]] x ---> [[a] -> [a]]
+
+2.  bools :: [Bool]
+    bools = [True] : bools
+
+    nums :: Int -> [[Int]]
+    nums 0 = [0]
+    nums n = [[n] : nums n - 1]
+
+    add :: Int -> Int -> Int -> Int
+    add x y z = x + y + z
+
+    copy :: a -> (a, a)
+    copy x = (x, x)
+
+    apply :: (a -> b) -> a -> b
+    apply f x = f x
+
+    -- also :: ha!
+    apply :: (a -> b) -> (a -> b)
+    apply f = f
+
+3.  What are the types of the following functions?
+
+    second :: [a] -> a
+    second xs = head (tail xs)
+
+    swap :: (a, b) -> (b, a)
+    swap (x, y) = (y, x)
+
+    pair :: a -> b -> (a, b)
+    pair x y = (x, y)
+
+    double :: Num a => a -> a
+    double x = x*2
+
+    palindrome :: Eq a => [a] -> Bool
+    palindrome xs = reverse xs == xs
+
+    -- this only works if a and a are same.
+    -- before I had type signature :: (a -> b) -> a -> b
+    twice :: (a -> a) -> a -> a
+    twice f x = f (f x)
