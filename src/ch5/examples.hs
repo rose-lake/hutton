@@ -67,3 +67,24 @@ positions x xs = [i | (x',i) <- zip xs [0..], x == x']
 -- this is just a quick shorthand for saying we're looking for an element x' which is equal to our parameter x
 -- INPUT: positions False [True, False, True, False]
 -- OUTPUT: [1,3]
+
+------------------------
+-- 5.4 Strings are lists, so... String comprehensions
+
+-- basics
+string = "abcde"
+string_at_index_2 = string !! 2
+string_take_3 = take 3 string
+string_length = length string
+
+-- also
+string_zip = zip string [1..]
+
+-- so, comprehensions
+-- count number of lower case letters in a String
+lowers :: String -> Int
+lowers xs = length [x | x <- xs, x >= 'a' && x <= 'z']
+
+-- count how many of a given Char in a String
+count :: Char -> String -> Int
+count x xs = length [x' | x' <- xs, x == x']

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 7b50bcb75a3c05dc1e4d736cafb2a53242c117a2e6ad1fe0e82e4e08e5604105
+-- hash: 9b91d64812857d546a0f21f688e79829d7958ee15a846f997a853ce12febbeb8
 
 name:           hutton
 version:        0.1.0.0
@@ -26,8 +26,6 @@ source-repository head
   location: https://github.com/rose-lake/hutton
 
 library
-  exposed-modules:
-      Lib
   other-modules:
       Paths_hutton
   hs-source-dirs:
