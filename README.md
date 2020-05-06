@@ -14,3 +14,6 @@ I began working in this book during my mini-batch at the Recurse Center in Febru
     - chapter 7
     - chapter 10 :: Optional: exercise 6: I want to do this exercise and add it to hangman!
     - chapter 12 :: exercises 1-8.
+
+# The Code
+Lives in [`src/`](https://github.com/rose-lake/hutton/tree/master/src) folder.
