@@ -119,3 +119,12 @@ original_positions x xs = [i | (x',i) <- zip xs [0..], x == x']
 
 
 -- ex 9
+-- scalar product of a list of xs and a list of ys of equal length n
+-- sum from i=0 to i=n-1 of ith_xs * ith_ys
+scalarproduct :: [Int] -> [Int] -> Int
+scalarproduct xs ys = sum [x * y | (x, y) <- zip xs ys]
+-- this version (ABOVE) is shorter and to the point!
+scalarproduct' :: [Int] -> [Int] -> Int
+scalarproduct' xs ys = sum [x * y | (x, i) <- zip xs [0..], (y, j) <- zip ys [0..], i==j]
+-- INPUT: scalarproduct [1, 2, 3] [4, 5, 6]
+-- OUTPUT: 32
