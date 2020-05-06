@@ -7,7 +7,6 @@
 ##############################
 # while I'm keeping all the default structures provided by `stack`
 # I'm also gitignoring those aspects I don't need right now
-app/
 test/
 package.yaml
 Setup.hs
