@@ -1,0 +1,62 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 3c1f361b0db7abe7b7acf843865e3f913afc66b653cf62e370ac9afeddab0003
+
+name:           hangman
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/rose-lake/hangman#readme>
+homepage:       https://github.com/rose-lake/hangman#readme
+bug-reports:    https://github.com/rose-lake/hangman/issues
+author:         Ksenia Rose Lake
+maintainer:     54857738+rose-lake@users.noreply.github.com
+copyright:      2020 Ksenia Rose Lake
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/rose-lake/hangman
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_hangman
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable hangman-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_hangman
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hangman
+  default-language: Haskell2010
+
+test-suite hangman-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hangman
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , hangman
+  default-language: Haskell2010
